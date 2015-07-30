@@ -4,7 +4,7 @@
 class Flusher
 {
 public:
-	Flusher()
+	Flusher(std::string prefix) : prefix_(prefix)
 	{
 	}	
 
@@ -21,10 +21,11 @@ public:
 
 	~Flusher()
 	{
-		std::cout <<"[ DEBUG ] "<< stream_.str() <<std::endl;
+		std::cout <<"[ DEBUG ] " << prefix_ << " - "<< stream_.str() <<std::endl;
 	}
 
 	std::stringstream stream_;
+	std::string prefix_;
 };
 
 class Buffer
@@ -47,7 +48,7 @@ class Logger
 public:
 	Flusher debug(void)
 	{
-		return Flusher();
+		return Flusher("Prefix");
 	}
 private:
 	static Buffer buff_;
