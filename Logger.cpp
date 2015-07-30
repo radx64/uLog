@@ -27,6 +27,21 @@ public:
 	std::stringstream stream_;
 };
 
+class Buffer
+{
+public:
+	explicit Buffer()
+	{
+		std::cout << "CTOR - Buffer created!" <<  std::endl;
+	}
+
+	~Buffer()
+	{
+		std::cout << "DTOR - Buffer destroyed!" <<  std::endl;
+	}
+
+};
+
 class Logger
 {
 public:
@@ -34,12 +49,19 @@ public:
 	{
 		return Flusher();
 	}
+private:
+	static Buffer buff_;
 };
+
+Buffer Logger::buff_;
 
 int main()
 {
 	Logger l;
 	l.debug() << "Hello World!" << " Some more greetings!";
 	l.debug() << "This should be done in new line!";
+	Logger l2;
+	Logger l3;
+	Logger l4;
 	return 0;
 }
