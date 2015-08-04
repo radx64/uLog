@@ -1,68 +1,35 @@
 #include <iostream>
 #include <sstream>
 
-class Flusher
+#include "Logger.hpp"
+
+Buffer::Buffer()
 {
-public:
-	Flusher(std::string prefix) : prefix_(prefix)
-	{
-	}	
+	std::cout << "CTOR - Buffer created!" <<  std::endl;
+}
 
-	Flusher(Flusher&& f) : stream_()
-	{
-	}
-
-	template <typename T>
-	Flusher& operator<<(const T& in)
-	{
-		stream_ << in;
-		return *this;
-	}	
-
-	~Flusher()
-	{
-		std::cout <<"[ DEBUG ] " << prefix_ << " - "<< stream_.str() <<std::endl;
-	}
-
-	std::stringstream stream_;
-	std::string prefix_;
-};
-
-class Buffer
+Buffer::~Buffer()
 {
-public:
-	explicit Buffer()
-	{
-		std::cout << "CTOR - Buffer created!" <<  std::endl;
-	}
+	std::cout << "DTOR - Buffer destroyed!" <<  std::endl;
+}
 
-	~Buffer()
-	{
-		std::cout << "DTOR - Buffer destroyed!" <<  std::endl;
-	}
-
-};
-
-class Logger
+Flusher::Flusher(std::string prefix, Buffer* buff) : prefix_(prefix), buff_(buff)
 {
-public:
-	Flusher debug(void)
-	{
-		return Flusher("Prefix");
-	}
-private:
-	static Buffer buff_;
-};
+}
+
+Flusher::Flusher(Flusher&& f) : stream_()
+{
+}
+
+Flusher::~Flusher()
+{
+	(*buff_) <<"[ DEBUG ] " << prefix_ << " - "<< stream_.str() << "\n";
+}
+
+
+Flusher Logger::debug(void)
+{
+	return Flusher("Prefix", &buff_);
+}
 
 Buffer Logger::buff_;
-
-int main()
-{
-	Logger l;
-	l.debug() << "Hello World!" << " Some more greetings!";
-	l.debug() << "This should be done in new line!";
-	Logger l2;
-	Logger l3;
-	Logger l4;
-	return 0;
-}
