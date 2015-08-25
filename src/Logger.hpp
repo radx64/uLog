@@ -42,6 +42,9 @@ class Logger
 {
 public:
 	Flusher debug(void);
+	Flusher info(void);
+	Flusher warn(void);
+	Flusher error(void);
 private:
 	static Buffer buff_;
 };

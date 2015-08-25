@@ -5,12 +5,12 @@
 
 Buffer::Buffer()
 {
-	std::cout << "CTOR - Buffer created!" <<  std::endl;
+	// std::cout << "CTOR - Buffer created!" <<  std::endl;
 }
 
 Buffer::~Buffer()
 {
-	std::cout << "DTOR - Buffer destroyed!" <<  std::endl;
+	// std::cout << "DTOR - Buffer destroyed!" <<  std::endl;
 }
 
 Flusher::Flusher(std::string prefix, Buffer* buff) : prefix_(prefix), buff_(buff)
@@ -23,13 +23,25 @@ Flusher::Flusher(Flusher&& f) : stream_()
 
 Flusher::~Flusher()
 {
-	(*buff_) <<"[ DEBUG ] " << prefix_ << " - "<< stream_.str() << "\n";
+	(*buff_) << prefix_ << "\t"<< stream_.str() << "\n";
 }
 
 
 Flusher Logger::debug(void)
 {
-	return Flusher("Prefix", &buff_);
+	return Flusher("[ DBG ] ", &buff_);
 }
 
+Flusher Logger::info(void)
+{
+	return Flusher("[ INF ] ", &buff_);
+}
+Flusher Logger::warn(void)
+{
+	return Flusher("[ WRN ] ", &buff_);
+}
+Flusher Logger::error(void)
+{
+	return Flusher("[ ERR ] ", &buff_);
+}
 Buffer Logger::buff_;
