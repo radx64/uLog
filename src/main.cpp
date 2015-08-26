@@ -8,8 +8,20 @@ int main()
 	l.info()  << "And this is info print!";
 	l.warn()  << "And this is warn print!";
 	l.error()   << "And this is error print!";
-	Logger l2;
-	Logger l3;
-	Logger l4;
+	l.error()   << 12;
+	l.error()   << 3.4;
+
+	FileLogger fl;
+	fl.debug() << "Hello World!" << " Some more greetings!";
+	fl.debug() << "This should be done in new line!";
+	fl.info()  << "And this is info print!";
+	fl.warn()  << "And this is warn print!";
+	fl.error()   << "And this is error print!";
+	fl.error()   << 12;
+	fl.error()   << 3.4;
+
+
+
+
 	return 0;
 }
