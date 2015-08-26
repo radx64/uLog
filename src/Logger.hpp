@@ -44,10 +44,13 @@ public:
 		return *this;		
 	}
 
-	~FileBuffer() override{};
+	~FileBuffer() override
+	{
+		file_.close();
+	};
+
 private:
 	std::fstream file_;
-
 };
 
 
