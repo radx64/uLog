@@ -5,7 +5,7 @@
 class FileLogger : public Logger
 {
 public:
-    FileLogger() : Logger() {}
+    FileLogger(){}
 
 protected:
     virtual IBuffer* getBuffer() override;

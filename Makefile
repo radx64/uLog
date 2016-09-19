@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -std=c++11
+CFLAGS=-c -std=c++11 -g -D_GLIBCXX_DEBUG
 LDFLAGS=-lrt
 SOURCES=$(wildcard src/*.cpp)
 OBJECTS=$(addprefix obj/, $(notdir $(SOURCES:.cpp=.o)))
@@ -38,7 +38,7 @@ clean:
 	@rm -f $(EXECUTABLE)
 	@echo "Cleaning done!"
 	@tput setf 7
-	
+
 $(EXECUTABLE): $(OBJECTS)
 	@tput setf 5
 	@echo "Linking libs..."

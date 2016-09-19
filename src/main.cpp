@@ -1,5 +1,6 @@
 #include "Logger.hpp"
 #include "FileLogger.hpp"
+#include "NetworkLogger.hpp"
 
 int main()
 {
@@ -20,6 +21,15 @@ int main()
 	fl.error() << "And this is error print!";
 	fl.error() << 12;
 	fl.error() << 3.4;
+
+	NetworkLogger nl;
+	nl.debug() << "Hello World!" << " Some more greetings!";
+	nl.debug() << "This should be done in new line!";
+	nl.info()  << "And this is info print!";
+	nl.warn()  << "And this is warn print!";
+	nl.error() << "And this is error print!";
+	nl.error() << 12;
+	nl.error() << 3.4;
 
 	return 0;
 }
