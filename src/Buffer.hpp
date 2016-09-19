@@ -8,13 +8,6 @@ class Buffer : public IBuffer
 public:
 	explicit Buffer();
 
-	// template <typename T>
-	// IBuffer& operator<<(const T& in) override
-	// {
-	// 	std::cout << in;
-	// 	return *this;
-	// }	
-
 	IBuffer& operator<<(const std::string& in) override;
 
 	~Buffer() override;

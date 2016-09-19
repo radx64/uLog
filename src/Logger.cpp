@@ -3,39 +3,26 @@
 
 #include "Logger.hpp"
 
-Flusher Logger::debug(void)
+Flusher Logger::debug()
 {
-	return Flusher("[ DBG ] ", &buff_);
+	return Flusher("[ DBG ] ", getBuffer());
 }
-Flusher Logger::info(void)
+Flusher Logger::info()
 {
-	return Flusher("[ INF ] ", &buff_);
+	return Flusher("[ INF ] ", getBuffer());
 }
-Flusher Logger::warn(void)
+Flusher Logger::warn()
 {
-	return Flusher("[ WRN ] ", &buff_);
+	return Flusher("[ WRN ] ", getBuffer());
 }
-Flusher Logger::error(void)
+Flusher Logger::error()
 {
-	return Flusher("[ ERR ] ", &buff_);
+	return Flusher("[ ERR ] ", getBuffer());
 }
 
-// Flusher FileLogger::debug(void)
-// {
-// 	return Flusher("[ DBG ] ", &buff_);
-// }
-// Flusher FileLogger::info(void)
-// {
-// 	return Flusher("[ INF ] ", &buff_);
-// }
-// Flusher FileLogger::warn(void)
-// {
-// 	return Flusher("[ WRN ] ", &buff_);
-// }
-// Flusher FileLogger::error(void)
-// {
-// 	return Flusher("[ ERR ] ", &buff_);
-// }
+IBuffer* Logger::getBuffer()
+{
+    return &buff_;
+}
 
 Buffer Logger::buff_;
-// FileBuffer FileLogger::buff_("log.txt");

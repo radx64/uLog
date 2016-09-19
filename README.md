@@ -1,2 +1,2 @@
 # uLog
-Micro Logger
+Micro logging framework
