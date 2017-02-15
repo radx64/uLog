@@ -1,3 +1,6 @@
+#include <chrono>
+#include <cstdint>
+
 #include "Logger.hpp"
 #include "FileLogger.hpp"
 #include "NetworkLogger.hpp"
@@ -30,6 +33,16 @@ int main()
 	nl.error() << "And this is error print!";
 	nl.error() << 12;
 	nl.error() << 3.4;
+
+
+	for (uint32_t i = 0; i <= 1024; ++i)
+	{
+		//l.error()  << i;
+		//fl.error() << i;
+		nl.error() << i;
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
+	}
+
 
 	return 0;
 }

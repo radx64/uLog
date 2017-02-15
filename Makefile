@@ -1,6 +1,6 @@
-CC=g++
-CFLAGS=-c -std=c++11 -g -D_GLIBCXX_DEBUG
-LDFLAGS=-lrt
+CC=clang++
+CFLAGS=-c -pthread -std=c++11 -g -D_GLIBCXX_DEBUG 
+LDFLAGS=-lpthread -lrt 
 SOURCES=$(wildcard src/*.cpp)
 OBJECTS=$(addprefix obj/, $(notdir $(SOURCES:.cpp=.o)))
 EXECUTABLE=logger
